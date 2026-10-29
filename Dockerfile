@@ -64,5 +64,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && git config --system url."https://github.com/".insteadOf "ssh://git@github.com/"
 
+# openclaw >=2026.10 requires Node >=24.22.1 (preinstall fails on Node 22), so it is pinned.
 # Install CLI tools globally. Separate layer from apt for better cache reuse.
-RUN npm install -g --no-audit --no-fund @openai/codex @anthropic-ai/claude-code droid openclaw@latest
+RUN npm install -g --no-audit --no-fund @openai/codex @anthropic-ai/claude-code droid openclaw@2026.9.9
